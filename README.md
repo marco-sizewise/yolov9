@@ -10,7 +10,7 @@ Implementation of paper - [YOLOv9: Learning What You Want to Learn Using Program
 
 <div align="center">
     <a href="./">
-        <img src="./figure/performance.png" width="79%"/>
+        <img src="yolov9/figure/performance.png" width="79%"/>
     </a>
 </div>
 
@@ -197,7 +197,7 @@ See [reparameterization.ipynb](https://github.com/WongKinYiu/yolov9/blob/main/to
 
 <div align="center">
     <a href="./">
-        <img src="./figure/horses_prediction.jpg" width="49%"/>
+        <img src="yolov9/figure/horses_prediction.jpg" width="49%"/>
     </a>
 </div>
 
@@ -240,7 +240,7 @@ Parts of code of [YOLOR-Based Multi-Task Learning](https://arxiv.org/abs/2309.16
 
 <div align="center">
     <a href="./">
-        <img src="./figure/multitask.png" width="99%"/>
+        <img src="yolov9/figure/multitask.png" width="99%"/>
     </a>
 </div>
 
