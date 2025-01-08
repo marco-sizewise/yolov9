@@ -21,6 +21,9 @@ setup(
     license="GPL-3.0",
     packages=find_packages(),  # Automatically find packages (like `models`)
     include_package_data=True,  # Include non-Python files specified in MANIFEST.in
+    package_data={
+        "yolov9": ["models/detect/*.yaml","models/hub/*.yaml","models/segment/*.yaml"],  # Include YAML files in this folder
+    },
     python_requires=">=3.9",  # Specify Python version compatibility
     install_requires=open("requirements.txt").read().splitlines(),  # Dependencies from requirements.txt
     classifiers=[
@@ -28,5 +31,6 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
+
 )
 # End of setup.py
