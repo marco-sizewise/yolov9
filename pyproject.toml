@@ -1,3 +1,12 @@
 [build-system]
 requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
+
+# Project settings #############################################################
+[project]
+name = "yolov9"
+dynamic = ["version"]
+description = "Object detection project. This is a fork of the original GNU licensed YOLOv9 repository."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { "text" = "GPL-3.0" }
