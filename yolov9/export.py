@@ -21,7 +21,7 @@ if str(ROOT) not in sys.path:
 if platform.system() != 'Windows':
     ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from yolov9.models.experimental import attempt_load, End2End
+from models.experimental import attempt_load, End2End
 from yolov9.models.yolo import ClassificationModel, Detect, DDetect, DualDetect, DualDDetect, DetectionModel, SegmentationModel
 from yolov9.utils.dataloaders import LoadImages
 from yolov9.utils.general import (LOGGER, Profile, check_dataset, check_img_size, check_requirements, check_version,
