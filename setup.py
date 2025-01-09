@@ -1,6 +1,6 @@
 # YOLO v9, GPL-3.0 license
 
-__version__ = "0.3.9"
+__version__ = "0.3.10"
 # import os
 from setuptools import setup, find_packages
 
