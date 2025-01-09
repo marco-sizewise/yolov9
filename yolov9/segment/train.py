@@ -22,22 +22,24 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-import segment.val as validate  # for end-of-epoch mAP
-from models.experimental import attempt_load
+import val as validate  # for end-of-epoch mAP
+from yolov9.models.experimental import attempt_load
 from yolov9.models.yolo import SegmentationModel
-from yolov9.utils import check_train_batch_size
+from yolov9.utils.autobatch import check_train_batch_size
 from yolov9.utils.callbacks import Callbacks
 from yolov9.utils.downloads import attempt_download, is_url
-from yolov9.utils import (LOGGER, TQDM_BAR_FORMAT, check_amp, check_dataset, check_file, check_img_size, check_suffix, check_yaml, colorstr,
+from yolov9.utils.general import (LOGGER, TQDM_BAR_FORMAT, check_amp, check_dataset, check_file, check_img_size, check_suffix, check_yaml, colorstr,
                           get_latest_run, increment_path, init_seeds, intersect_dicts, labels_to_class_weights,
                           labels_to_image_weights, one_cycle, print_args, print_mutation, strip_optimizer, yaml_save)
-from yolov9.utils import GenericLogger
-from yolov9.utils import plot_evolve, plot_labels
-from yolov9.utils import create_dataloader
-from yolov9.utils import ComputeLoss
-from yolov9.utils import KEYS, fitness
+from yolov9.utils.loggers import GenericLogger
+from yolov9.utils.plots import plot_evolve, plot_labels
+from yolov9.utils.dataloaders import create_dataloader
+from yolov9.utils.loss import ComputeLoss  # several loss functions
+# from yolov9.utils import KEYS, fitness
+from yolov9.utils.metrics import fitness
+from yolov9.utils.segment.metrics import KEYS  # several metrics
 from yolov9.utils.segment.plots import plot_images_and_masks, plot_results_with_masks
-from yolov9.utils import (EarlyStopping, ModelEMA, de_parallel, select_device, smart_DDP, smart_optimizer,
+from yolov9.utils.torch_utils import (EarlyStopping, ModelEMA, de_parallel, select_device, smart_DDP, smart_optimizer,
                           smart_resume, torch_distributed_zero_first)
 
 LOCAL_RANK = int(os.getenv('LOCAL_RANK', -1))  # https://pytorch.org/docs/stable/elastic/run.html

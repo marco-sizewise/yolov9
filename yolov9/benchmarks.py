@@ -17,8 +17,8 @@ from models.experimental import attempt_load
 from yolov9.models.yolo import SegmentationModel
 from segment.val import run as val_seg
 from yolov9.utils import notebook_init
-from yolov9.utils import LOGGER, check_yaml, file_size, print_args
-from yolov9.utils import select_device
+from yolov9.utils.general import LOGGER, check_yaml, file_size, print_args
+from yolov9.utils.torch_utils import select_device
 from val import run as val_det
 
 

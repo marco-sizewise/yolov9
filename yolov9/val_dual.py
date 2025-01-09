@@ -16,13 +16,13 @@ ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 from models.common import DetectMultiBackend
 from yolov9.utils.callbacks import Callbacks
-from yolov9.utils import create_dataloader
-from yolov9.utils import (LOGGER, TQDM_BAR_FORMAT, Profile, check_dataset, check_img_size, check_requirements,
+from yolov9.utils.dataloaders import create_dataloader
+from yolov9.utils.general import (LOGGER, TQDM_BAR_FORMAT, Profile, check_dataset, check_img_size, check_requirements,
                           check_yaml, coco80_to_coco91_class, colorstr, increment_path, non_max_suppression,
                           print_args, scale_boxes, xywh2xyxy, xyxy2xywh)
-from yolov9.utils import ConfusionMatrix, ap_per_class, box_iou
-from yolov9.utils import output_to_target, plot_images, plot_val_study
-from yolov9.utils import select_device, smart_inference_mode
+from yolov9.utils.metrics import ConfusionMatrix, ap_per_class, box_iou
+from yolov9.utils.plots import output_to_target, plot_images, plot_val_study
+from yolov9.utils.torch_utils import select_device, smart_inference_mode
 
 
 def save_one_txt(predn, save_conf, shape, file):

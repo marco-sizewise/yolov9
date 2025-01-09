@@ -6,11 +6,15 @@ import pkg_resources as pkg
 import torch
 from torch.utils.tensorboard import SummaryWriter
 
-from yolov9.utils import LOGGER, colorstr, cv2
-from yolov9.utils import ClearmlLogger
-from yolov9.utils import WandbLogger
-from yolov9.utils import plot_images, plot_labels, plot_results
-from yolov9.utils import de_parallel
+from yolov9.utils.general import LOGGER, colorstr, cv2
+# from yolov9.utils import ClearmlLogger
+# from yolov9.utils import WandbLogger
+# from yolov9.utils import plot_images, plot_labels, plot_results
+# from yolov9.utils import de_parallel
+from yolov9.utils.loggers.clearml.clearml_utils import ClearmlLogger
+from yolov9.utils.loggers.wandb.wandb_utils import WandbLogger
+from yolov9.utils.plots import plot_labels, plot_images, plot_results
+from yolov9.utils.torch_utils import de_parallel
 
 LOGGERS = ('csv', 'tb', 'wandb', 'clearml', 'comet')  # *.csv, TensorBoard, Weights & Biases, ClearML
 RANK = int(os.getenv('RANK', -1))

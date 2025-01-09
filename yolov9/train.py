@@ -25,20 +25,20 @@ ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 import val as validate  # for end-of-epoch mAP
 from models.experimental import attempt_load
 from yolov9.models.yolo import Model
-from yolov9.utils import check_train_batch_size
+from yolov9.utils.autobatch import check_train_batch_size
 from yolov9.utils.callbacks import Callbacks
-from yolov9.utils import create_dataloader
+from yolov9.utils.dataloaders import create_dataloader
 from yolov9.utils.downloads import attempt_download, is_url
-from yolov9.utils import (LOGGER, TQDM_BAR_FORMAT, check_amp, check_dataset, check_file, check_img_size,
+from yolov9.utils.general import (LOGGER, TQDM_BAR_FORMAT, check_amp, check_dataset, check_file, check_img_size,
                           check_suffix, check_yaml, colorstr, get_latest_run, increment_path, init_seeds,
                           intersect_dicts, labels_to_class_weights, labels_to_image_weights, methods,
                           one_cycle, one_flat_cycle, print_args, print_mutation, strip_optimizer, yaml_save)
-from yolov9.utils import Loggers
-from yolov9.utils import check_comet_resume
+from yolov9.utils.loggers import Loggers
+from yolov9.utils.loggers.comet.comet_utils import check_comet_resume
 from yolov9.utils.loss_tal import ComputeLoss
-from yolov9.utils import fitness
-from yolov9.utils import plot_evolve
-from yolov9.utils import (EarlyStopping, ModelEMA, de_parallel, select_device, smart_DDP,
+from yolov9.utils.metrics import fitness
+from yolov9.utils.plots import plot_evolve
+from yolov9.utils.torch_utils import (EarlyStopping, ModelEMA, de_parallel, select_device, smart_DDP,
                           smart_optimizer, smart_resume, torch_distributed_zero_first)
 
 LOCAL_RANK = int(os.getenv('LOCAL_RANK', -1))  # https://pytorch.org/docs/stable/elastic/run.html

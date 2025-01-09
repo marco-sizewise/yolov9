@@ -41,13 +41,13 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from models.common import DetectMultiBackend
-from yolov9.utils import classify_transforms
-from yolov9.utils import IMG_FORMATS, VID_FORMATS, LoadImages, LoadScreenshots, LoadStreams
-from yolov9.utils import (LOGGER, Profile, check_file, check_img_size, check_imshow, check_requirements, colorstr, cv2,
+from yolov9.models.common import DetectMultiBackend
+from yolov9.utils.augmentations import classify_transforms
+from yolov9.utils.dataloaders import IMG_FORMATS, VID_FORMATS, LoadImages, LoadScreenshots, LoadStreams
+from yolov9.utils.general import (LOGGER, Profile, check_file, check_img_size, check_imshow, check_requirements, colorstr, cv2,
                           increment_path, print_args, strip_optimizer)
-from yolov9.utils import Annotator
-from yolov9.utils import select_device, smart_inference_mode
+from yolov9.utils.plots import Annotator
+from yolov9.utils.torch_utils import select_device, smart_inference_mode
 
 
 @smart_inference_mode()

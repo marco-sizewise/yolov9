@@ -23,10 +23,10 @@ if platform.system() != 'Windows':
 
 from models.experimental import attempt_load, End2End
 from yolov9.models.yolo import ClassificationModel, Detect, DDetect, DualDetect, DualDDetect, DetectionModel, SegmentationModel
-from yolov9.utils import LoadImages
-from yolov9.utils import (LOGGER, Profile, check_dataset, check_img_size, check_requirements, check_version,
+from yolov9.utils.dataloaders import LoadImages
+from yolov9.utils.general import (LOGGER, Profile, check_dataset, check_img_size, check_requirements, check_version,
                           check_yaml, colorstr, file_size, get_default_args, print_args, url2file, yaml_save)
-from yolov9.utils import select_device, smart_inference_mode
+from yolov9.utils.torch_utils import select_device, smart_inference_mode
 
 MACOS = platform.system() == 'Darwin'  # macOS environment
 
@@ -202,9 +202,10 @@ def export_onnx_end2end(model, im, file, simplify, topk_all, iou_thres, conf_thr
 def export_openvino(file, metadata, half, prefix=colorstr('OpenVINO:')):
     # YOLO OpenVINO export
     check_requirements('openvino-dev')  # requires openvino-dev: https://pypi.org/project/openvino-dev/
-    import openvino.inference_engine as ie
+    # import openvino.inference_engine as ie
 
-    LOGGER.info(f'\n{prefix} starting export with openvino {ie.__version__}...')
+    # LOGGER.info(f'\n{prefix} starting export with openvino {ie.__version__}...')
+    LOGGER.info(f'\n{prefix} starting export with openvino (openvino NOT USED??))...')
     f = str(file).replace('.pt', f'_openvino_model{os.sep}')
 
     #cmd = f"mo --input_model {file.with_suffix('.onnx')} --output_dir {f} --data_type {'FP16' if half else 'FP32'}"

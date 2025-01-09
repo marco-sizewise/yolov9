@@ -16,8 +16,8 @@ if str(ROOT) not in sys.path:
 
 from yolov9.train import train
 from yolov9.utils.callbacks import Callbacks
-from yolov9.utils import increment_path
-from yolov9.utils import select_device
+from yolov9.utils.general import increment_path
+from yolov9.utils.torch_utils import select_device
 
 # Project Configuration
 config = comet_ml.config.get_config()

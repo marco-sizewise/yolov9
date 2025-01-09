@@ -10,13 +10,14 @@ from typing import Dict
 import yaml
 from tqdm import tqdm
 
+
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[3]  # YOLOv5 root directory
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 
-from yolov9.utils import LoadImagesAndLabels, img2label_paths
-from yolov9.utils import LOGGER, check_dataset, check_file
+from yolov9.utils.dataloaders import LoadImagesAndLabels, img2label_paths
+from yolov9.utils.general import LOGGER, check_dataset, check_file
 
 try:
     import wandb

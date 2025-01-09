@@ -10,8 +10,8 @@ if str(ROOT) not in sys.path:
 
 from yolov9.train import parse_opt, train
 from yolov9.utils.callbacks import Callbacks
-from yolov9.utils import increment_path
-from yolov9.utils import select_device
+from yolov9.utils.general import increment_path
+from yolov9.utils.torch_utils import select_device
 
 
 def sweep():

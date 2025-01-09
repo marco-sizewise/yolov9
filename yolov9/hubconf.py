@@ -22,8 +22,8 @@ def _create(name, pretrained=True, channels=3, classes=80, autoshape=True, verbo
     from models.experimental import attempt_load
     from yolov9.models.yolo import ClassificationModel, DetectionModel, SegmentationModel
     from yolov9.utils.downloads import attempt_download
-    from yolov9.utils import LOGGER, check_requirements, intersect_dicts, logging
-    from yolov9.utils import select_device
+    from yolov9.utils.general import LOGGER, check_requirements, intersect_dicts, logging
+    from yolov9.utils.torch_utils import select_device
 
     if not verbose:
         LOGGER.setLevel(logging.WARNING)

@@ -49,8 +49,10 @@ def notebook_init(verbose=True):
     import os
     import shutil
 
-    from yolov9.utils import check_font, is_colab
-    from yolov9.utils import select_device  # imports
+    # from yolov9.utils import check_font, is_colab
+    from yolov9.utils.general import check_font, is_colab
+    # from yolov9.utils import select_device  # imports
+    from yolov9.utils.torch_utils import select_device
 
     check_font()
 

@@ -32,7 +32,7 @@ import yaml
 
 from yolov9.utils import TryExcept, emojis
 from yolov9.utils.downloads import gsutil_getsize
-from yolov9.utils import box_iou, fitness
+from yolov9.utils.metrics import box_iou, fitness
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[1]  # YOLO root directory
@@ -557,7 +557,7 @@ def check_dataset(data, autodownload=True):
 
 def check_amp(model):
     # Check PyTorch Automatic Mixed Precision (AMP) functionality. Return True on correct operation
-    from models.common import AutoShape
+    from yolov9.models.common import AutoShape
 
     def amp_allclose(model, im):
         # All close FP32 vs AMP results
@@ -900,6 +900,11 @@ def non_max_suppression(
 
     if isinstance(prediction, (list, tuple)):  # YOLO model in validation model, output = (inference_out, loss_out)
         prediction = prediction[0]  # select only inference output
+
+    # MTB: if prediction is of type list, and the first element is a tensor...
+    if isinstance(prediction, (list, tuple)) and isinstance(prediction[0], torch.Tensor):
+        # print(f'(REMOVE) 1 ----- prediction: {prediction}')
+        prediction = torch.cat(prediction, 0)
 
     device = prediction.device
     mps = 'mps' in device.type  # Apple MPS

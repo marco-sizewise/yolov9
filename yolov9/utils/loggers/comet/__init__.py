@@ -5,6 +5,7 @@ import os
 import sys
 from pathlib import Path
 
+
 logger = logging.getLogger(__name__)
 
 FILE = Path(__file__).resolve()
@@ -22,14 +23,19 @@ except (ModuleNotFoundError, ImportError):
     comet_ml = None
     COMET_PROJECT_NAME = None
 
-import PIL
+
+# import PIL
+from PIL import Image
 import torch
 import torchvision.transforms as T
 import yaml
 
-from yolov9.utils import img2label_paths
-from yolov9.utils import check_dataset, scale_boxes, xywh2xyxy
-from yolov9.utils import box_iou
+from yolov9.utils.dataloaders import img2label_paths
+# from yolov9.utils import check_dataset, scale_boxes, xywh2xyxy
+from yolov9.utils.dataloaders import check_dataset, xywh2xyxy
+from yolov9.utils.general import scale_boxes
+# from yolov9.utils import box_iou
+from yolov9.utils.metrics import box_iou
 
 COMET_PREFIX = "comet://"
 
@@ -256,7 +262,8 @@ class CometLogger:
         image_id = path.split("/")[-1].split(".")[0]
         image_name = f"{image_id}_curr_epoch_{self.experiment.curr_epoch}"
         if image_name not in self.logged_image_names:
-            native_scale_image = PIL.Image.open(path)
+            # native_scale_image = PIL.Image.open(path)
+            native_scale_image = Image.open(path)
             self.log_image(native_scale_image, name=image_name)
             self.logged_image_names.append(image_name)
 

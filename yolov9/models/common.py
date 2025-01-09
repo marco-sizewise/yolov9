@@ -21,12 +21,12 @@ from PIL import Image
 from torch.cuda import amp
 
 from yolov9.utils import TryExcept
-from yolov9.utils import exif_transpose, letterbox
-from yolov9.utils import (LOGGER, ROOT, Profile, check_requirements, check_suffix, check_version, colorstr,
+from yolov9.utils.dataloaders import exif_transpose, letterbox
+from yolov9.utils.general import (LOGGER, ROOT, Profile, check_requirements, check_suffix, check_version, colorstr,
                           increment_path, is_notebook, make_divisible, non_max_suppression, scale_boxes,
                           xywh2xyxy, xyxy2xywh, yaml_load)
-from yolov9.utils import Annotator, colors, save_one_box
-from yolov9.utils import copy_attr, smart_inference_mode
+from yolov9.utils.plots import Annotator, colors, save_one_box
+from yolov9.utils.torch_utils import copy_attr, smart_inference_mode
 
 
 def autopad(k, p=None, d=1):  # kernel, padding, dilation
@@ -686,7 +686,6 @@ class DetectMultiBackend(nn.Module):
         #   TensorFlow Lite:                *.tflite
         #   TensorFlow Edge TPU:            *_edgetpu.tflite
         #   PaddlePaddle:                   *_paddle_model
-        from models.experimental import attempt_download, attempt_load  # scoped to avoid circular import
 
         super().__init__()
         w = str(weights[0] if isinstance(weights, list) else weights)
@@ -696,9 +695,11 @@ class DetectMultiBackend(nn.Module):
         stride = 32  # default stride
         cuda = torch.cuda.is_available() and device.type != 'cpu'  # use CUDA
         if not (pt or triton):
+            from yolov9.models.experimental import attempt_download  # scoped to avoid circular import
             w = attempt_download(w)  # download if not local
 
         if pt:  # PyTorch
+            from yolov9.models.experimental import attempt_load  # scoped to avoid circular import
             model = attempt_load(weights if isinstance(weights, list) else w, device=device, inplace=True, fuse=fuse)
             stride = max(int(model.stride.max()), 32)  # model stride
             names = model.module.names if hasattr(model, 'module') else model.names  # get class names

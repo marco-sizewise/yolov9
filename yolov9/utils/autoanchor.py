@@ -6,7 +6,7 @@ import yaml
 from tqdm import tqdm
 
 from yolov9.utils import TryExcept
-from yolov9.utils import LOGGER, TQDM_BAR_FORMAT, colorstr
+from yolov9.utils.general import LOGGER, TQDM_BAR_FORMAT, colorstr
 
 PREFIX = colorstr('AutoAnchor: ')
 

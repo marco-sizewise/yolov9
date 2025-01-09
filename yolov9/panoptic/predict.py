@@ -6,20 +6,22 @@ from pathlib import Path
 
 import torch
 
+
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[1]  # YOLO root directory
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from models.common import DetectMultiBackend
-from yolov9.utils import IMG_FORMATS, VID_FORMATS, LoadImages, LoadScreenshots, LoadStreams
-from yolov9.utils import (LOGGER, Profile, check_file, check_img_size, check_imshow, check_requirements, colorstr, cv2,
+# from models.common import DetectMultiBackend
+from yolov9.models.common import DetectMultiBackend
+from yolov9.utils.dataloaders import IMG_FORMATS, VID_FORMATS, LoadImages, LoadScreenshots, LoadStreams
+from yolov9.utils.general import (LOGGER, Profile, check_file, check_img_size, check_imshow, check_requirements, colorstr, cv2,
                           increment_path, non_max_suppression, print_args, scale_boxes, scale_segments,
                           strip_optimizer)
-from yolov9.utils import Annotator, colors, save_one_box
-from yolov9.utils import masks2segments, process_mask
-from yolov9.utils import select_device, smart_inference_mode
+from yolov9.utils.plots import Annotator, colors, save_one_box
+from yolov9.utils.segment.general import masks2segments, process_mask # several versions of this functions
+from yolov9.utils.torch_utils import select_device, smart_inference_mode
 
 
 @smart_inference_mode()

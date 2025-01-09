@@ -4,12 +4,12 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from yolov9.utils import xywh2xyxy, xyxy2xywh
-from yolov9.utils import bbox_iou
-from yolov9.utils import dist2bbox, make_anchors, bbox2dist
-from yolov9.utils import TaskAlignedAssigner
-from yolov9.utils import de_parallel
-from yolov9.utils import crop_mask
+from yolov9.utils.general import xywh2xyxy, xyxy2xywh
+from yolov9.utils.metrics import bbox_iou
+from yolov9.utils.segment.tal.anchor_generator import dist2bbox, make_anchors, bbox2dist
+from yolov9.utils.segment.tal.assigner import TaskAlignedAssigner
+from yolov9.utils.torch_utils import de_parallel
+from yolov9.utils.segment.general import crop_mask
 
 
 def smooth_BCE(eps=0.1):  # https://github.com/ultralytics/yolov3/issues/238#issuecomment-598028441
