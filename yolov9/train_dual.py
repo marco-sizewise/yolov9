@@ -35,7 +35,7 @@ from yolov9.utils.general import (LOGGER, TQDM_BAR_FORMAT, check_amp, check_data
                           yaml_save, one_flat_cycle)
 from yolov9.utils.loggers import Loggers
 # from yolov9.utils import check_comet_resume
-from utils.loggers.comet.comet_utils import check_comet_resume
+from yolov9.utils.loggers.comet.comet_utils import check_comet_resume
 from yolov9.utils.loss_tal_dual import ComputeLoss  # several loss functions... this one looks ok, due to the comments.
 #from utils.loss_tal_dual import ComputeLossLH as ComputeLoss
 #from utils.loss_tal_dual import ComputeLossLHCF as ComputeLoss

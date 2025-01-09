@@ -23,7 +23,7 @@ if str(ROOT) not in sys.path:
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 import val_triple as validate  # for end-of-epoch mAP
-from models.experimental import attempt_load
+from yolov9.models.experimental import attempt_load
 from yolov9.models.yolo import Model
 from yolov9.utils import check_train_batch_size
 from yolov9.utils.callbacks import Callbacks
