@@ -35,7 +35,7 @@ onnx-simplifier>=0.4.1
 # nvidia-pyindex
 # nvidia-tensorrt
 # scikit-learn<=1.1.2
-scikit-learn
+#scikit-learn
 tensorflow>=2.4.1
 tensorflowjs>=3.9.0
 openvino-dev
