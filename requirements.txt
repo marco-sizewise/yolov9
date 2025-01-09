@@ -51,3 +51,4 @@ wandb
 
 # MTB: Added in January
 x2paddle
+cython
