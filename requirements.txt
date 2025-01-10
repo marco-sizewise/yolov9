@@ -21,8 +21,8 @@ tqdm>=4.64.0
 # Logging ---------------------------------------------------------------------
 tensorboard>=2.4.1
 clearml>=1.2.0
-comet
-comet_ml # Manually added
+#comet
+#comet_ml # Manually added
 
 # Plotting --------------------------------------------------------------------
 pandas>=1.1.4
