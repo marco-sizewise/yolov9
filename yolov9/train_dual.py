@@ -13,6 +13,7 @@ import torch
 import torch.distributed as dist
 import torch.nn as nn
 import yaml
+from torch.distributed.elastic.multiprocessing.errors import record
 from torch.optim import lr_scheduler
 from tqdm import tqdm
 
@@ -491,6 +492,7 @@ def parse_opt(known=False):
     return parser.parse_known_args()[0] if known else parser.parse_args()
 
 
+@record
 def main(opt, callbacks=Callbacks()):
     # Checks
     if RANK in {-1, 0}:
